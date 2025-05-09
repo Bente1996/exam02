@@ -26,7 +26,7 @@ int	no_double(char *doubles, char c)
 
 void	function(char *s1, char *s2, int len)
 {
-	char	doubles[len];
+	char	doubles[len + 1];
 	int	i;
 	int	j;
 
@@ -41,6 +41,7 @@ void	function(char *s1, char *s2, int len)
 	doubles[j] = s1[i];
 	write(1, &doubles[j], 1);
 	i++;
+	// if (ft_strlen(s1) > 1)
 	while (s1[i] != '\0')
 	{
 		if (no_double(doubles, s1[i]))
@@ -68,9 +69,10 @@ int	main(int argc, char **argv)
 {
 	int	len;
 
+	if (argc != 3)
+		return (1);
 	len = ft_strlen(argv[1]) + ft_strlen(argv[2]);
-	if (argc == 3)
-		function(argv[1], argv[2], len);
+	function(argv[1], argv[2], len);
 	write(1, &"\n", 1);
 	return (0);
 }
